@@ -10,7 +10,9 @@ export class TemplateComponent implements OnInit {
 
   public user = {
 
-    name: ''
+    name: 'Juan Manuel',
+    lastName: 'Lopez',
+    email: 'juanmanuel@gmail.com'
 
   };
 
