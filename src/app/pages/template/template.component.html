@@ -1,6 +1,8 @@
 <h4>Formularios <small> Template </small></h4>
 <hr>
-<form autocomplete="off">
+
+<!-- En esta aproximacion al form le ponemos el evento de (ngSubmit), a cada campo el atributo name y el ngMode y al botón que envia el formulario lo colocamos de tipo submit -->
+<form autocomplete="off" (ngSubmit)="save()">
 
   <div>
 
@@ -10,7 +12,11 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Nombre">
+               placeholder="Nombre"
+               name="name"
+               ngModel
+               required
+               minlength="5">
       </div>
     </div>
 

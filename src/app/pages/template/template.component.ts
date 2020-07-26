@@ -12,4 +12,10 @@ export class TemplateComponent implements OnInit {
   ngOnInit() {
   }
 
+  public save() {
+
+    console.log(' Submit disparado ');
+
+  }
+
 }
