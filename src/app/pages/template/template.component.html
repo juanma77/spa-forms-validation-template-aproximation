@@ -1,8 +1,8 @@
 <h4>Formularios <small> Template </small></h4>
 <hr>
 
-<!-- En esta aproximacion al form le ponemos el evento de (ngSubmit), a cada campo el atributo name y el ngMode y al botón que envia el formulario lo colocamos de tipo submit -->
-<form autocomplete="off" (ngSubmit)="save()">
+<!-- En esta aproximacion al form le ponemos el evento de (ngSubmit), a cada campo el atributo name y el ngMode y al botón que envia el formulario lo colocamos de tipo submit. A su vez agregamos una referencia local "#forma" que mandamos como argumento a la función que definimos en el (ngSubmit) -->
+<form autocomplete="off" (ngSubmit)="save( forma )" #forma="ngForm">
 
   <div>
 
@@ -14,7 +14,7 @@
                type="text"
                placeholder="Nombre"
                name="name"
-               ngModel
+               [ngModel]="user.name"
                required
                minlength="5">
       </div>
