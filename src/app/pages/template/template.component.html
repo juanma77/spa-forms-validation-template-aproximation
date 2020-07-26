@@ -1,7 +1,7 @@
 <h4>Formularios <small> Template </small></h4>
 <hr>
 
-<!-- En esta aproximacion al form le ponemos el evento de (ngSubmit), a cada campo el atributo name y el ngMode y al botón que envia el formulario lo colocamos de tipo submit. A su vez agregamos una referencia local "#forma" que mandamos como argumento a la función que definimos en el (ngSubmit) -->
+<!-- En esta aproximacion al form le ponemos el evento de (ngSubmit), a cada campo el atributo name y el ngMode y al botón que envia el formulario lo colocamos de tipo submit. A su vez agregamos una referencia local "#forma" que mandamos como argumento a la función que definimos en el (ngSubmit). También debemos de agregar el [class.is-invalid] para que aparezca el campo en rojo si no se llena adecuadamente, aquí cabe resaltar que agregamos la referencia local "#name"="ngModel" para tomar el control de todo el input -->
 <form autocomplete="off" (ngSubmit)="save( forma )" #forma="ngForm">
 
   <div>
@@ -16,7 +16,10 @@
                name="name"
                [ngModel]="user.name"
                required
-               minlength="5">
+               minlength="5"
+               [class.is-invalid]="name.invalid && name.touched"
+               #name="ngModel"
+               >
       </div>
     </div>
 
