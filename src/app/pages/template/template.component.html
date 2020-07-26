@@ -20,6 +20,9 @@
                [class.is-invalid]="name.invalid && name.touched"
                #name="ngModel"
                >
+        <small class="form-text text-danger" *ngIf="name.invalid && name.touched">Ingrese 5 letras</small>       
+
+
       </div>
     </div>
 
@@ -36,6 +39,10 @@
                minlength="5"
                [class.is-invalid]="lastName.invalid && lastName.touched"
                #lastName="ngModel">
+
+        <small class="form-text text-danger" *ngIf="lastName.invalid && lastName.touched">Ingrese 5 letras</small>        
+
+
       </div>
     </div>
 
@@ -55,6 +62,8 @@
              minlength="5"
              [class.is-invalid]="email.invalid && email.touched"
              #email="ngModel">
+           
+      <small class="form-text text-danger" *ngIf="email.invalid && email.touched">El correo es obligatorio</small>        
     </div>
   </div>
 
