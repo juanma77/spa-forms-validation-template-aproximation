@@ -11,19 +11,32 @@ export class TemplateComponent implements OnInit {
 
   public user = {
 
-    name: 'Juan Manuel',
-    lastName: 'Lopez',
-    email: 'juanmanuel@gmail.com'
+    name: '',
+    lastName: '',
+    email: '',
+    country: ''
 
   };
 
+  public countries: any[] = [];
+
   constructor( private countryService: CountryService ) { }
 
+  // El unshift() es para agregar un nuevo elemento al inicio de un arreglo 
   ngOnInit() {
 
     this.countryService.getCountries().subscribe( paises => {
 
-      console.log( paises );
+      this.countries = paises; 
+
+      this.countries.unshift({
+
+        name: '[ Seleccione un País ]',
+        code: ''
+
+      });
+
+      console.log( this.countries );
 
     });
 

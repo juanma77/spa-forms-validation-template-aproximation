@@ -25,7 +25,7 @@ export class CountryService {
 
           return {
             name: pais.name,
-            codigo: pais.alpha3Code
+            code: pais.alpha3Code
           }
 
         })
