@@ -14,7 +14,8 @@ export class TemplateComponent implements OnInit {
     name: '',
     lastName: '',
     email: '',
-    country: ''
+    country: '',
+    genre: 'M'
 
   };
 
