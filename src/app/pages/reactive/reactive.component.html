@@ -1,6 +1,9 @@
 <h4>Formularios <small> Reactivos </small></h4>
 <hr>
-<form autocomplete="off">
+
+<!-- Debemos usar el [formGroup] en la etiqueta form y en cada input poner un formControlName que sea igual a la propiedad del
+this.formBuilder -->
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="save()">
 
   <div>
 
@@ -10,7 +13,8 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Nombre">
+               placeholder="Nombre"
+               formControlName="name">
       </div>
     </div>
 
@@ -20,7 +24,8 @@
 
         <input class="form-control"
                type="text"
-               placeholder="Apellido">
+               placeholder="Apellido"
+               formControlName="lastName">
       </div>
     </div>
 
@@ -32,7 +37,8 @@
 
       <input class="form-control"
              type="email"
-             placeholder="Correo electrónico">
+             placeholder="Correo electrónico"
+             formControlName="email">
     </div>
   </div>
 
