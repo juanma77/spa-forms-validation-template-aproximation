@@ -52,7 +52,21 @@ export class ReactiveComponent implements OnInit {
 
         //console.log( control );
 
-        control.markAllAsTouched();
+        if( control instanceof FormGroup) {
+
+          Object.values( control.controls ).forEach( control => {
+
+            control.markAllAsTouched();
+
+          });
+
+        } else {
+
+          control.markAllAsTouched();
+
+
+        }
+
 
       } );
 
@@ -78,6 +92,19 @@ export class ReactiveComponent implements OnInit {
     return this.forma.get('email').invalid && this.forma.get('email').touched;
 
   }
+
+  public get notValidDistrict() {
+
+    return this.forma.get('address.district').invalid && this.forma.get('address.district').touched;
+
+  }
+
+  public get notValidCity() {
+
+    return this.forma.get('address.city').invalid && this.forma.get('address.city').touched;
+
+  }
+
 
 
 
