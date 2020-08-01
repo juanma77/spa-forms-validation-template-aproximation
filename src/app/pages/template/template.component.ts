@@ -57,6 +57,8 @@ export class TemplateComponent implements OnInit {
 
       } );
 
+      return; 
+
 
     }
 

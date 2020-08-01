@@ -38,6 +38,40 @@ export class ReactiveComponent implements OnInit {
 
     console.log( this.forma ); 
 
+     // Esto es para que al dar clic al botón de Enviar y mientras algun campo no sea valido aparezcan los mensajes de error poniendo los controls de la forma como Touched ( es decir, como si hubiesen sido tocados por el usuario )
+     if( this.forma.invalid ) {
+
+      return Object.values( this.forma.controls ).forEach( control =>{
+
+        //console.log( control );
+
+        control.markAllAsTouched();
+
+      } );
+
+
+    }
+
   }
+
+  public get notValidName() {
+
+    return this.forma.get('name').invalid && this.forma.get('name').touched;
+
+  }
+
+  public get notValidLastName() {
+
+    return this.forma.get('lastName').invalid && this.forma.get('lastName').touched;
+
+  }
+
+  public get notValidEmail() {
+
+    return this.forma.get('email').invalid && this.forma.get('email').touched;
+
+  }
+
+
 
 }

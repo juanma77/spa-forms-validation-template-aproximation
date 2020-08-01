@@ -1,8 +1,7 @@
 <h4>Formularios <small> Reactivos </small></h4>
 <hr>
 
-<!-- Debemos usar el [formGroup] en la etiqueta form y en cada input poner un formControlName que sea igual a la propiedad del
-this.formBuilder -->
+<!-- Debemos usar el [formGroup] en la etiqueta form y en cada input poner un formControlName que sea igual a la propiedad del this.formBuilder; el notValidName() de [class.is-invalid] es para revisar si el campo es invalido y si ha sido manipulado -->
 <form autocomplete="off" [formGroup]="forma" (ngSubmit)="save()">
 
   <div>
@@ -14,7 +13,9 @@ this.formBuilder -->
         <input class="form-control"
                type="text"
                placeholder="Nombre"
-               formControlName="name">
+               formControlName="name"
+               [class.is-invalid]="notValidName">
+          <small *ngIf="notValidName" class="text-danger">Ingrese al menos 5 letras</small>
       </div>
     </div>
 
@@ -25,7 +26,9 @@ this.formBuilder -->
         <input class="form-control"
                type="text"
                placeholder="Apellido"
-               formControlName="lastName">
+               formControlName="lastName"
+               [class.is-invalid]="notValidLastName">
+               <small *ngIf="notValidLastName" class="text-danger">Ingrese al menos 5 letras</small>
       </div>
     </div>
 
@@ -38,7 +41,9 @@ this.formBuilder -->
       <input class="form-control"
              type="email"
              placeholder="Correo electrónico"
-             formControlName="email">
+             formControlName="email"
+             [class.is-invalid]="notValidEmail">
+             <small *ngIf="notValidEmail" class="text-danger">Ingrese un email válido</small>
     </div>
   </div>
 
