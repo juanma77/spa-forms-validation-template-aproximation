@@ -47,6 +47,7 @@
     </div>
   </div>
 
+  <!-- Para campos compuesto como direccion (que tiene distrito y ciduad) usar el formGroupName-->
   <div class="form-group row" formGroupName="address">
     <label class="col-2 col-form-label">Dirección</label>
     <div class="form-row col">
@@ -77,6 +78,51 @@
 
     </div>
   </div>    
+
+  <!-- Para elementos como checkbox usar el formArrayName; usar ademas el [formControlName] para apuntar al primer, segundo, n elemento -->
+  <div class="row">
+    <div class="col">
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>
+              ID
+            </th>
+
+            <th>
+              Pasatiempo
+            </th>
+
+            <th>
+              Borrar
+            </th>
+          </tr>
+
+        </thead>
+
+        <tbody formArrayName="hobbies">
+          <tr *ngFor="let control of hobbies.controls; let i = index">
+
+            <td> {{ i + 1 }} </td>
+            <td> 
+              <input type="text" class="form-control" [formControlName]="i"> 
+            </td>
+            <td>
+
+              <button class="btn btn-danger">Borrar</button>
+
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+      <button type="button" class="btn btn-primary mt-3 mb-5 btn-block">+ Agregar</button>
+
+    </div>
+  </div>  
 
 
 
