@@ -14,6 +14,7 @@ export class ReactiveComponent implements OnInit {
   constructor( private formBuilder: FormBuilder ) {
 
     this.createForm();
+    this.loadDataToForm();
 
   }
 
@@ -73,6 +74,7 @@ export class ReactiveComponent implements OnInit {
 
     }
 
+
   }
 
   public get notValidName() {
@@ -105,6 +107,26 @@ export class ReactiveComponent implements OnInit {
 
   }
 
+
+  loadDataToForm() {
+
+    //this.forma.setValue({
+    this.forma.reset({
+
+      name: 'juan',
+      lastName: 'lopez',
+      email: 'juan@gmail.com',
+      address: {
+
+        district: 'uno',
+        city: 'ags'
+
+      }
+
+    });
+
+
+  }
 
 
 
