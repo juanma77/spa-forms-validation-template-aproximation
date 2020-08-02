@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,24 @@ import { Injectable } from '@angular/core';
 export class ValidatorsService {
 
   constructor() { }
+
+
+  public noHerrera( control: FormControl ): { [ s: string ]: boolean } {
+
+    if( control.value.toLowerCase() === 'herrera' ) {
+
+      return {
+
+        noHerrera: true
+
+      } 
+
+    } 
+
+    return null; 
+
+   
+
+  }
+
 }

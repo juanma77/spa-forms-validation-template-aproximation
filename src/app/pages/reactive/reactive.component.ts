@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ValidatorsService } from 'src/app/services/validators.service';
 
 @Component({
   selector: 'app-reactive',
@@ -11,7 +12,7 @@ export class ReactiveComponent implements OnInit {
   public forma: FormGroup;
 
   // FormBuilder es un servicio que nos ayuda a crear formularios reactivos mas facilmente 
-  constructor( private formBuilder: FormBuilder ) {
+  constructor( private formBuilder: FormBuilder, private validatorsService: ValidatorsService ) {
 
     this.createForm();
     this.loadDataToForm();
@@ -27,7 +28,9 @@ export class ReactiveComponent implements OnInit {
     this.forma = this.formBuilder.group({
 
       name: [ '', [ Validators.required, Validators.minLength(5) ] ],
-      lastName: [ '', [ Validators.required, Validators.minLength(5) ] ],
+
+      lastName: [ '', [ Validators.required, Validators.minLength(5), this.validatorsService.noHerrera ] ],
+      
       email: [ '', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ] ],
       
       address : this.formBuilder.group({
