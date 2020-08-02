@@ -39,9 +39,7 @@ export class ReactiveComponent implements OnInit {
       }),
 
       hobbies: this.formBuilder.array([
-        [],
-        [],
-        []
+       
       ])
 
     });
@@ -132,6 +130,13 @@ export class ReactiveComponent implements OnInit {
 
     });
 
+    // Esto es para cargar la data en los campos de hobbies del formulario; es diferente a lo de arriba, aunque podriamos usar tambien el setValue, mas sin embargo esto seria contraproducente 
+    ['Dormir', 'Comer'].forEach( valor  =>{
+
+      this.hobbies.push( this.formBuilder.control( valor ) );
+
+    })
+
 
   }
 
@@ -139,6 +144,21 @@ export class ReactiveComponent implements OnInit {
   public get hobbies() {
 
     return this.forma.get('hobbies') as FormArray; 
+
+  }
+
+  // Para agregar un nuevo pasatiempo al dar clic al botón de Agregar 
+  public addHobbie() {
+
+    this.hobbies.push( this.formBuilder.control( '') );
+
+  }
+
+  // Para borrar un pasatiempo
+
+  public deleteHobbie( i: number ) {
+
+    this.hobbies.removeAt( i ); 
 
   }
 
