@@ -30,8 +30,11 @@ export class ReactiveComponent implements OnInit {
       name: [ '', [ Validators.required, Validators.minLength(5) ] ],
 
       lastName: [ '', [ Validators.required, Validators.minLength(5), this.validatorsService.noHerrera ] ],
-      
+
       email: [ '', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ] ],
+
+      firstPassword: [ '', Validators.required ],
+      secondPassword: [ '', Validators.required ],
       
       address : this.formBuilder.group({
 
@@ -44,6 +47,11 @@ export class ReactiveComponent implements OnInit {
       hobbies: this.formBuilder.array([
        
       ])
+
+    }, {
+
+      validators: this.validatorsService.checkSamePasswords( 'firstPassword', 'secondPassword' )
+
 
     });
 
@@ -115,6 +123,23 @@ export class ReactiveComponent implements OnInit {
 
   }
 
+  public get notValidFirstPassword() {
+
+    return this.forma.get('firstPassword').invalid && this.forma.get('firstPassword').touched;
+
+  }
+
+  public get notValidSecondPassword() {
+
+    const passOne = this.forma.get('firstPassword').value;
+    const passTwo = this.forma.get('secondPassword').value;
+
+    
+    // Veerificamos si passOne es igual a passTwo, en caso de no ser cierto se ejecuta lo que esta luego del signo de interrogacion ("?)", en caso de ser cierto se ejeuta lo que esta luego de los dos puntos ":"; es decir regresa false y true en cada caso respectivamente 
+    return passOne === passTwo ? false: true; 
+
+  }
+
 
   loadDataToForm() {
 
@@ -123,10 +148,10 @@ export class ReactiveComponent implements OnInit {
 
       name: 'alvaro',
       lastName: 'lopez',
-      email: 'juan@gmail.com',
+      email: 'al@gmail.com',
       address: {
 
-        district: 'uno',
+        district: 'Santa Lucía',
         city: 'ags'
 
       }
