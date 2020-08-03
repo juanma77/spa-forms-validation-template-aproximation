@@ -17,6 +17,8 @@ export class ReactiveComponent implements OnInit {
     this.createForm();
     this.loadDataToForm();
 
+    this.createListeners();
+
   }
 
   ngOnInit() {
@@ -195,6 +197,33 @@ export class ReactiveComponent implements OnInit {
 
     return this.forma.get('user').invalid && this.forma.get('user').touched; 
 
+
+  }
+
+  public createListeners() {
+
+    // Para escuchar cada vez que se hace un cambio en el valor del input (del control)
+    this.forma.valueChanges.subscribe( forma =>{
+
+      console.log( forma );
+
+
+    });
+
+    // Para escuchar el status de la forma
+    this.forma.statusChanges.subscribe( status =>{
+
+      console.log( { status } );
+
+    });
+
+    // Para esuchar los cambios que tiene el valor del input (del control) en especifico
+    this.forma.get('name').valueChanges.subscribe( fieldName => {
+
+      console.log( fieldName );
+
+    });
+    
 
   }
 
