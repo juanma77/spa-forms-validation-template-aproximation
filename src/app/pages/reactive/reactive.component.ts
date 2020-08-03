@@ -33,6 +33,8 @@ export class ReactiveComponent implements OnInit {
 
       email: [ '', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$') ] ],
 
+      user: [ '', , this.validatorsService.userExists ],
+
       firstPassword: [ '', Validators.required ],
       secondPassword: [ '', Validators.required ],
       
@@ -183,10 +185,16 @@ export class ReactiveComponent implements OnInit {
   }
 
   // Para borrar un pasatiempo
-
   public deleteHobbie( i: number ) {
 
     this.hobbies.removeAt( i ); 
+
+  }
+
+  public get notValidUser() {
+
+    return this.forma.get('user').invalid && this.forma.get('user').touched; 
+
 
   }
 

@@ -47,6 +47,19 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Usuario</label>
+    <div class="col">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Usuario"
+             formControlName="user"
+             [class.is-invalid]="notValidUser">
+             <small *ngIf="notValidUser" class="text-danger">Nombre de usuario ya tomado</small>
+    </div>
+  </div>
+
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Contraseña</label>
